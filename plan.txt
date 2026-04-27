@@ -1,0 +1,20 @@
+- The user will write a movie review in the input box in the GUI.
+- The program will analyze the review and determine whether the movie is suitable for children.
+- The result will display:
+
+    - Suitable for Children
+      Reason: EXPLANATION HERE
+
+    or
+
+    - Not Suitable for Children
+      Reason: EXPLANATION HERE
+
+====================================================
+
+How It Works:
+
+- Gather 500+ labeled training reviews for better accuracy.
+- Train a machine learning model using the dataset.
+- Predict whether new user reviews are suitable for children.
+- Connect the trained model to the GUI.
