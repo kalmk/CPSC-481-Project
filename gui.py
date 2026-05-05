@@ -23,4 +23,5 @@ if st.button("Classify Review"):
 
     st.subheader(result["label"])
     st.write(f"Confidence: {displayed_confidence:.2f}")
+    st.caption(f"Model: {result.get('source', 'unknown')}")
     st.write(f"Reason: {result['reason']}")

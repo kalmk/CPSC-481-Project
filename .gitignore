@@ -1,3 +1,6 @@
 venv
 model.pkl
 __pycache__/
+distilbert_checkpoints/
+distilbert_safety_model/
+distilbert_threshold.pkl

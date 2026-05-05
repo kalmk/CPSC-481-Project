@@ -75,3 +75,21 @@ review,final_label,safety_category
 "The movie has content that parents may find inappropriate.",0,unsafe_general
 "The film has a lot of scenes that are too adult for children.",0,unsafe_general
 "The movie contains inappropriate material despite looking simple.",0,unsafe_general
+"Oh sure, bring the kids if you want them to ask about rehabilitative justice and structural infidelity for weeks. A total blast for the whole family, provided your family is a group of sociology professors.",0,unsafe_sarcasm
+"Perfect for children, assuming they are ready for a lecture about infidelity and adult relationships.",0,unsafe_sarcasm
+"A wonderful family night, if your family wants to explain divorce, betrayal, and moral decay afterward.",0,unsafe_sarcasm
+"Sure, take the kids, because nothing says child friendly like two hours of adult trauma and social collapse.",0,unsafe_sarcasm
+"Great fun for the whole family, as long as the family enjoys bleak arguments about crime and punishment.",0,unsafe_sarcasm
+"Bring the children if you want bedtime questions about addiction, betrayal, and broken families.",0,unsafe_sarcasm
+"A total blast for kids who love dense political lectures and adult relationship drama.",0,unsafe_sarcasm
+"Perfect family entertainment, provided the children already understand affairs and institutional corruption.",0,unsafe_sarcasm
+"The movie says it is for families, but the review is clearly joking about how mature and academic it is.",0,unsafe_sarcasm
+"It sounds family friendly only sarcastically; the review points to adult themes and complex moral issues.",0,unsafe_sarcasm
+"The story teaches children about fairness through simple examples and gentle humor.",1,safe_educational
+"The movie introduces big ideas in a warm, simple way that children can understand.",1,safe_educational
+"The film has thoughtful lessons about kindness and justice without mature adult themes.",1,safe_educational
+"The story encourages kids to ask questions while staying gentle and age appropriate.",1,safe_educational
+"The movie has a smart message for families but keeps the language and themes child friendly.",1,safe_educational
+"The film is educational and still suitable for young viewers.",1,safe_educational
+"The movie explores fairness, honesty, and teamwork in a child-friendly way.",1,safe_educational
+"The story has a serious lesson but presents it with warmth and simple examples.",1,safe_educational

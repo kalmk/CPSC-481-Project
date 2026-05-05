@@ -5,6 +5,7 @@ from model_explanations import (
     SUITABLE_LABEL,
     generate_model_reason,
 )
+from semantic_safety import classify_with_distilbert
 
 # load everything
 # model = joblib.load("model.pkl")
@@ -26,12 +27,28 @@ def predict_review(review):
 
 
 def classify_review(review):
+    distilbert_result = classify_with_distilbert(review)
+    if distilbert_result is not None:
+        return {
+            "label": distilbert_result.label,
+            "confidence": distilbert_result.suitable_probability,
+            "reason": distilbert_result.reason,
+            "source": distilbert_result.source,
+        }
+
     prediction, prob, review_vec = predict_review(review)
-    reason = generate_model_reason(review_vec, vectorizer, model, prediction)
 
     if prediction == 1:
         label = SUITABLE_LABEL
     else:
         label = NOT_SUITABLE_LABEL
 
-    return {"label": label, "confidence": prob, "reason": reason}
+    reason = generate_model_reason(review_vec, vectorizer, model, prediction)
+    source = "svm"
+
+    return {
+        "label": label,
+        "confidence": prob,
+        "reason": reason,
+        "source": source,
+    }
