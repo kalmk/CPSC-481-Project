@@ -1,5 +1,11 @@
 import joblib
 
+from model_explanations import (
+    NOT_SUITABLE_LABEL,
+    SUITABLE_LABEL,
+    generate_model_reason,
+)
+
 # load everything
 # model = joblib.load("model.pkl")
 # vectorizer = joblib.load("vectorizer.pkl")
@@ -16,63 +22,16 @@ def predict_review(review):
 
     prediction = 1 if prob >= threshold else 0
 
-    return prediction, prob
-
-
-def generate_reason(review, prediction):
-    review_lower = review.lower()
-
-    unsafe_keywords = [
-        "violence",
-        "gore",
-        "blood",
-        "kill",
-        "sexual",
-        "nudity",
-        "drug",
-        "abuse",
-        "horror",
-        "disturbing",
-        "intense",
-    ]
-
-    safe_keywords = [
-        "family",
-        "kids",
-        "children",
-        "animated",
-        "wholesome",
-        "fun",
-        "lighthearted",
-    ]
-
-    if prediction == 0:
-        for word in unsafe_keywords:
-            if word in review_lower:
-                return f"The review mentions {word}, which may be inappropriate for children."
-        return "The review suggests mature or intense themes."
-
-    else:
-        for word in safe_keywords:
-            if word in review_lower:
-                return f"The review highlights {word} content suitable for children."
-        return "The review suggests generally appropriate content for children."
+    return prediction, prob, review_vec
 
 
 def classify_review(review):
-    prediction, prob = predict_review(review)
-    reason = generate_reason(review, prediction)
+    prediction, prob, review_vec = predict_review(review)
+    reason = generate_model_reason(review_vec, vectorizer, model, prediction)
 
     if prediction == 1:
-        label = "Suitable for Children"
+        label = SUITABLE_LABEL
     else:
-        label = "Not Suitable for Children"
+        label = NOT_SUITABLE_LABEL
 
     return {"label": label, "confidence": prob, "reason": reason}
-
-
-review = "The movie has intense battle scenes and disturbing imagery."
-
-result = classify_review(review)
-
-print(result)

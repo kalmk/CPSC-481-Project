@@ -1,5 +1,4 @@
 from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     classification_report,
@@ -8,12 +7,18 @@ from sklearn.metrics import (
     recall_score,
 )
 
-import numpy as np
-import pandas as pd
 import joblib
 
+from data_loading import append_supplemental_training_data, load_base_dataset
+from text_features import build_text_vectorizer
+from training_utils import (
+    evaluate_thresholds,
+    print_threshold_results,
+    select_threshold,
+)
 
-df = pd.read_csv("training_dataset.csv")
+
+df = load_base_dataset()
 
 # input and output variables
 X = df["review"]
@@ -30,14 +35,17 @@ X_train, X_val, y_train, y_val = train_test_split(
     X_temp, y_temp, test_size=0.25, random_state=42, stratify=y_temp
 )
 
+X_train, y_train, supplemental_count = append_supplemental_training_data(
+    X_train, y_train
+)
+
 print("Train size:", len(X_train))
+print("Supplemental training examples:", supplemental_count)
 print("Validation size:", len(X_val))
 print("Test size:", len(X_test))
 
 # vectorize the text data using TF-IDF
-vectorizer = TfidfVectorizer(
-    stop_words="english", max_features=5000, ngram_range=(1, 2)
-)
+vectorizer = build_text_vectorizer()
 
 X_train_vec = vectorizer.fit_transform(X_train)
 X_val_vec = vectorizer.transform(X_val)
@@ -50,8 +58,12 @@ model.fit(X_train_vec, y_train)
 
 # attempt to minimize the false positives
 probs_val = model.predict_proba(X_val_vec)[:, 1]
+threshold_results = evaluate_thresholds(y_val, probs_val)
+selected_threshold = select_threshold(y_val, probs_val)
+threshold = selected_threshold["threshold"]
 
-threshold = 0.55
+print_threshold_results(threshold_results)
+print("\nBest threshold chosen from validation set:", threshold)
 
 probs_test = model.predict_proba(X_test_vec)[:, 1]
 y_pred = (probs_test >= threshold).astype(int)

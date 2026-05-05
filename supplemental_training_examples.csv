@@ -1,0 +1,77 @@
+review,final_label,safety_category
+"This movie is fun and has many different scenes.",1,safe_general
+"The story is fun with colorful scenes and friendly characters.",1,safe_general
+"There are many creative scenes and the tone stays gentle.",1,safe_general
+"The movie has different scenes that are silly and playful.",1,safe_general
+"This is a lighthearted movie with cheerful scenes and simple jokes.",1,safe_general
+"The film is fun for a family audience and easy to follow.",1,safe_general
+"Kids can enjoy the adventure because the humor is gentle.",1,safe_general
+"The animated story has warm characters and a positive ending.",1,safe_general
+"This movie has bright music, funny moments, and kind characters.",1,safe_general
+"The scenes are imaginative and the story feels wholesome.",1,safe_general
+"It is a playful family film with a friendly message.",1,safe_general
+"The movie is cheerful, simple, and appropriate for children.",1,safe_general
+"There are different settings and fun moments throughout the film.",1,safe_general
+"The review describes a sweet story with harmless comedy.",1,safe_general
+"This is a gentle adventure with teamwork and friendship.",1,safe_general
+"The film has fun scenes, colorful animation, and a kind message.",1,safe_general
+"The movie is upbeat and suitable for a young audience.",1,safe_general
+"The story uses silly humor and friendly characters to entertain children.",1,safe_general
+"This fun movie has many scenes but keeps the content gentle.",1,safe_general
+"The film feels wholesome, bright, and family friendly.",1,safe_general
+"The movie has a lot of scenes.",1,safe_neutral
+"The film has many scenes and different settings.",1,safe_neutral
+"The movie has lots of different scenes throughout the story.",1,safe_neutral
+"There are many scenes in the movie.",1,safe_neutral
+"The movie has several scenes and a simple story.",1,safe_neutral
+"The film has different moments and many scenes.",1,safe_neutral
+"The movie has a lot of different parts.",1,safe_neutral
+"The story moves through many different scenes.",1,safe_neutral
+"The movie includes many scenes with different characters.",1,safe_neutral
+"The film has a lot of scenes and an easy story.",1,safe_neutral
+"The movie has a lot of scenes but nothing intense.",1,safe_neutral
+"The film has many scenes and stays gentle.",1,safe_neutral
+"This movie is fun but includes cocaine use and uncensored scenes.",0,unsafe_drugs
+"The story is exciting but shows characters using cocaine.",0,unsafe_drugs
+"The film has a positive message but includes drug use by adults.",0,unsafe_drugs
+"This review describes a funny movie with scenes of substance abuse.",0,unsafe_drugs
+"The movie is entertaining but includes illegal drugs as part of the plot.",0,unsafe_drugs
+"The film looks colorful but contains adult drug references.",0,unsafe_drugs
+"The comedy has fun moments but includes repeated drug scenes.",0,unsafe_drugs
+"This movie includes uncensored adult scenes and mature situations.",0,unsafe_sexual_content
+"The film is well acted but contains explicit sexual content.",0,unsafe_sexual_content
+"The review says the movie has nudity and adult scenes.",0,unsafe_sexual_content
+"The story is romantic but includes sexual material unsuitable for children.",0,unsafe_sexual_content
+"The movie is popular but has uncensored scenes meant for adults.",0,unsafe_sexual_content
+"The action is exciting but includes graphic violence.",0,unsafe_violence
+"The movie has intense fight scenes and bloody injuries.",0,unsafe_violence
+"The film is adventurous but includes disturbing violence.",0,unsafe_violence
+"The story has repeated scenes of people being killed.",0,unsafe_violence
+"The movie has scary images and disturbing scenes.",0,unsafe_horror
+"The review describes horror imagery that may frighten children.",0,unsafe_horror
+"The movie is suspenseful but too intense for young viewers.",0,unsafe_horror
+"The film has frightening scenes and mature themes.",0,unsafe_horror
+"The comedy contains strong profanity throughout.",0,unsafe_profanity
+"The movie has frequent harsh language unsuitable for children.",0,unsafe_profanity
+"The review mentions crude jokes and adult language.",0,unsafe_profanity
+"The film has mature dialogue and inappropriate jokes.",0,unsafe_profanity
+"The movie is fun but the themes are too mature for children.",0,unsafe_mature_themes
+"The story includes abuse and serious adult issues.",0,unsafe_mature_themes
+"The film has a good cast but focuses on trauma and adult conflict.",0,unsafe_mature_themes
+"The review describes disturbing behavior and mature subject matter.",0,unsafe_mature_themes
+"The movie has a lot of violent scenes.",0,unsafe_violence
+"The film has many scenes of drug use.",0,unsafe_drugs
+"The movie has different scenes with uncensored adult content.",0,unsafe_sexual_content
+"There are many disturbing scenes in the movie.",0,unsafe_horror
+"The film has a lot of scenes with harsh profanity.",0,unsafe_profanity
+"The story moves through many mature scenes unsuitable for children.",0,unsafe_mature_themes
+"The movie has a lot of scenes that are inappropriate.",0,unsafe_general
+"The film has several inappropriate scenes.",0,unsafe_general
+"The review says some scenes are inappropriate for children.",0,unsafe_general
+"The movie has inappropriate content for young viewers.",0,unsafe_general
+"The film has moments that are not appropriate for children.",0,unsafe_general
+"The movie is not safe for children because of mature content.",0,unsafe_general
+"The story includes scenes that are unsuitable for kids.",0,unsafe_general
+"The movie has content that parents may find inappropriate.",0,unsafe_general
+"The film has a lot of scenes that are too adult for children.",0,unsafe_general
+"The movie contains inappropriate material despite looking simple.",0,unsafe_general

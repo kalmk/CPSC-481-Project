@@ -1,8 +1,6 @@
-import pandas as pd
 import joblib
 
 from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.metrics import (
@@ -12,9 +10,17 @@ from sklearn.metrics import (
     recall_score,
 )
 
+from data_loading import append_supplemental_training_data, load_base_dataset
+from text_features import build_text_vectorizer
+from training_utils import (
+    evaluate_thresholds,
+    print_threshold_results,
+    select_threshold,
+)
+
 
 # load dataset
-df = pd.read_csv("training_dataset.csv")
+df = load_base_dataset()
 
 # input and output variables
 X = df["review"]
@@ -35,16 +41,19 @@ X_train, X_val, y_train, y_val = train_test_split(
     stratify=y_temp,
 )
 
+X_train, y_train, supplemental_count = append_supplemental_training_data(
+    X_train, y_train
+)
+
 print("Train size:", len(X_train))
+print("Supplemental training examples:", supplemental_count)
 print("Validation size:", len(X_val))
 print("Test size:", len(X_test))
 
 # -----------------------------
 # 2. Vectorize the text data using TF-IDF
 # -----------------------------
-vectorizer = TfidfVectorizer(
-    stop_words="english", max_features=5000, ngram_range=(1, 2)
-)
+vectorizer = build_text_vectorizer()
 
 X_train_vec = vectorizer.fit_transform(X_train)
 X_val_vec = vectorizer.transform(X_val)
@@ -64,35 +73,12 @@ model.fit(X_train_vec, y_train)
 # -----------------------------
 probs_val = model.predict_proba(X_val_vec)[:, 1]
 
-thresholds = [0.5, 0.55, 0.6, 0.65, 0.7]
-best_threshold = 0.5
-best_score = -1
-best_cm = None
+threshold_results = evaluate_thresholds(y_val, probs_val)
+selected_threshold = select_threshold(y_val, probs_val)
+best_threshold = selected_threshold["threshold"]
 
-print("\nValidation threshold search:")
-for th in thresholds:
-    preds_val = (probs_val >= th).astype(int)
-    cm = confusion_matrix(y_val, preds_val)
-    tn, fp, fn, tp = cm.ravel()
-
-    recall_suitable = recall_score(y_val, preds_val, pos_label=1)
-
-    print(f"\nThreshold: {th}")
-    print(cm)
-    print(f"FP: {fp}, FN: {fn}, TP: {tp}, TN: {tn}")
-    print(f"Recall (Suitable): {recall_suitable:.2f}")
-
-    # choose threshold with low FP, but keep suitable recall acceptable
-    if recall_suitable >= 0.5:
-        score = -fp
-        if score > best_score:
-            best_score = score
-            best_threshold = th
-            best_cm = cm
-
+print_threshold_results(threshold_results)
 print("\nBest threshold chosen from validation set:", best_threshold)
-print("Best validation confusion matrix:")
-print(best_cm)
 
 # -----------------------------
 # 5. Final evaluation on test set

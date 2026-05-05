@@ -1,8 +1,7 @@
 import streamlit as st
 
+from model_explanations import SUITABLE_LABEL
 from pipeline import classify_review
-
-SUITABLE_LABEL = "Suitable for Children"
 
 
 def confidence_for_predicted_class(result):
