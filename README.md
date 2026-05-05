@@ -15,7 +15,7 @@ Uses Streamlit web UI to display these results.
 - Python
 
 ## Dependencies
-
+```pip install -r requirements.txt```
 
 ## How to train
 
