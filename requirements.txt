@@ -6,3 +6,4 @@ joblib
 torch
 transformers
 tqdm
+transformers[torch]
