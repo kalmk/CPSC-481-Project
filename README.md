@@ -1,4 +1,6 @@
 ## AI Movie Classifier: Is It Kid-Friendly?
+<img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/a4966556-dfa9-4e37-8b73-2764928e3dc6" />
+
 
 ## Overview
 This project predicts whether a movie is suitable for children based on a review.
