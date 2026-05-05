@@ -19,7 +19,7 @@ Uses Streamlit web UI to display these results.
 
 ## How to train
 
-```python svm_models.py```
+```python svm_model.py```
 
 ```python model.py```
 
